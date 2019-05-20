@@ -1,0 +1,23 @@
+{
+  "name": "text-rpg",
+  "version": "1.0.0",
+  "description": "A command line interface text based RPG prototype. This will be using constructors to join objects into an environment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calvinshin/text-rpg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calvinshin/text-rpg/issues"
+  },
+  "homepage": "https://github.com/calvinshin/text-rpg#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  }
+}
