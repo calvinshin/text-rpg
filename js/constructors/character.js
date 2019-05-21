@@ -1,4 +1,4 @@
-function Hero(name, hp, str, def, lvl, exp, type) {
+function Character(name, hp, str, def, lvl, exp, type, room = "None") {
     this.name = name;
     function Stats(hp, str, def) {
         this.hp = hp;
@@ -12,7 +12,7 @@ function Hero(name, hp, str, def, lvl, exp, type) {
     this.type = type;
 }
 
-Hero.prototype.attack = function(target, counter) {
+Character.prototype.attack = function(target, counter) {
     // Damages the target based on a simple arithmatic calculation
     var damage = Math.max((this.cur.str - target.cur.def), 0)
     console.log(this.name + " attacks " + target.name + " for " + damage + " damage!")
@@ -35,3 +35,4 @@ Hero.prototype.attack = function(target, counter) {
     }
 }
 
+module.exports = Character;

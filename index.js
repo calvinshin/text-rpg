@@ -8,19 +8,12 @@ var fs = require("fs");
 // Require other files
 var heroLoad = require("./js/config/heroLoad")
 var checkHero = require("./js/config/checkHero")
-// checkHero(heroLoad());
 
-console.log("\n\nWelcome to Amora, a text-based mini adventure.");
+global.bar = "----------------------------------------";
 
-inquirer.prompt([
-    {
-        name: "name",
-        message: "What is your name?"
-    },
-    {
-        name: "choice",
-        message: "What do you value?"
-    }
-]).then(function(response) {
-    console.log(response.name + "\n" + response.choice)
-})
+console.log("\n\nWelcome to Amora, a text-based mini adventure.\n\n\n" + global.bar + "\n\n");
+
+// Attempts to heroLoad, or load all the data in a text file. Without anything, the game is initialized.
+heroLoad();
+
+module.exports = bar
