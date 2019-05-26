@@ -1,7 +1,7 @@
 // Where the hero is created after the initialprompt
 
 Character = require("../constructors/character");
-Room = require("../constructors/room");
+trainingGrounds = require("../rooms/trainingGrounds")
 
 function heroCreator(value) {
     if(value.choice === "Power") {
@@ -14,11 +14,7 @@ function heroCreator(value) {
         global.hero = new Character(value.name, 10, 5, 5, 1, 0, "Hero")
     }
 
-    // After the hero is created, the first room is created!
-    global.container.trainingGrounds = new Room("Training Grounds");
-    global.container.trainingGrounds.description();
-    // For the sake of testing purposes, the 
-    global.container.trainingGrounds.prompt();
+    trainingGrounds();
 }
 
 module.exports = heroCreator;

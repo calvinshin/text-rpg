@@ -10,6 +10,7 @@ function Character(name, hp, str, def, lvl, exp, type, room = "None") {
     this.lvl = lvl;
     this.exp = exp;
     this.type = type;
+    this.items = [];
 }
 
 Character.prototype.attack = function(target, counter) {
@@ -34,5 +35,9 @@ Character.prototype.attack = function(target, counter) {
         }
     }
 }
+
+Character.prototype.checkInventory = function() {
+
+};
 
 module.exports = Character;
