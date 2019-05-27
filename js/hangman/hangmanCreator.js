@@ -1,5 +1,6 @@
-Item = require("../constructors/item");
+var Item = require("../constructors/item");
 var inquirer = require("inquirer");
+var game = require("./hangmanGame")
 
 function hangmanCreator(room) {
     var hangmanGame = new Item("hangman game", "Game", true);
@@ -16,6 +17,7 @@ function hangmanCreator(room) {
         ]).then(function(response) {
             if(response.choice === "Yes") {
                 // Play game
+                game();
             }
             else{
                 // go back to the room's inspection
