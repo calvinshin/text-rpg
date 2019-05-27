@@ -1,6 +1,8 @@
 # text-rpg
 A command line interface text based RPG prototype. This will be using constructors to join objects into an environment.
 
+![Demo](/demo/demo.gif)
+
 ## General Architecture
 The application uses global variables  to contain the game elements. 
 
@@ -30,6 +32,7 @@ The room contains all of the objects that are associated in the room. All object
 
 ## room.inspect()
 ![Example of a room.inspect](/demo/inspect.png)
+
 The game is heavily dependent on [Inquirer](https://www.npmjs.com/package/inquirer), a node package that prompts the user's input. To keep the application running, any function will eventually lead to a new inquirer prompt. The values available for room.inspect() are dependent on the available interactive elements in the room. For example, the interact and attack options are only available when there is a character in the room.
 
 ## Hangman Game
