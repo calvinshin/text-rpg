@@ -10,6 +10,7 @@ hangman = require("../hangman/hangmanCreator")
 function trainingGrounds() {
     // After the hero is created, the first room is created!
     global.container.trainingGrounds = new Room("Training Grounds");
+    global.current = global.container.trainingGrounds;
     global.container.trainingGrounds.description();
     // creating a new hangman game
     hangman(global.container.trainingGrounds);

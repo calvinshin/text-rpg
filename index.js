@@ -10,7 +10,7 @@ var heroLoad = require("./js/config/heroLoad")
 var checkHero = require("./js/config/checkHero")
 
 global.bar = "----------------------------------------";
-global.spacer = "\n\n----------------------------------------\n\n"
+global.spacer = "\n\n----------------------------------------\n\n";
 
 global.displayArray = function(array) {
     if(Array.isArray(array)) {

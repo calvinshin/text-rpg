@@ -18,9 +18,9 @@ Item.prototype.Pickup = function() {
     }
 }
 
-Item.prototype.inspected = function() {
+Item.prototype.inspected = function(room) {
     console.log("This is a " + this.name + ".");
-    this.specialInspect();
+    this.specialInspect(room);
 }
 
 module.exports = Item;
