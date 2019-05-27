@@ -7,7 +7,13 @@ function prompt() {
     inquirer.prompt([
         {
             name: "name",
-            message: "What is your name?"
+            message: "What is your name?",
+            validate: function(response) {
+                if(response.length > 0) {
+                    return true
+                }
+                return false
+            }
         },
         {
             name: "choice",

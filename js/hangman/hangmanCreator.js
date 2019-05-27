@@ -20,7 +20,6 @@ function hangmanCreator(room) {
             if(response.choice === "Yes") {
                 // Play game
                 var test = new Hangman();
-                test.display();
             }
             else{
                 // go back to the room's inspection

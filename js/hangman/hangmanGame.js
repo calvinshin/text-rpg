@@ -23,29 +23,38 @@ function Letter(char) {
     }
 }
 
-function Hangman(string = "One. Two. Fizz. Four. Buzz.") {
-    this.letters = [];
-    this.string = string;
-    this.lives = 5;
+function Hangman() {
+    This = this;
+    fs.readFile("./js/hangman/phrases.txt", {encoding: 'utf-8'}, function(err,data) {
+        if (err) throw err;
+        var list = data.replace(/\r\n/g,'\n').split("\n")
+        string = list[Math.floor(Math.random() * list.length)];
 
-    // Create a 26 character array that allows for checking to see if a value has either been guessed already, in the string, or not in it.
-    this.guessed = new Array(26).fill(0);
+        This.letters = [];
+        This.string = string;
+        This.lives = 5;
+    
+        // Create a 26 character array that allows for checking to see if a value has either been guessed already, in the string, or not in it.
+        This.guessed = new Array(26).fill(0);
+    
+        // Create the letters in the string
+        for(var i = 0; i < string.length; i++) {
+            This.letters.push(new Letter(string[i]))
+            value = string[i].toLowerCase().charCodeAt(0)
 
-    // Create the letters in the string
-    for(var i = 0; i < string.length; i++) {
-        this.letters.push(new Letter(string[i]))
-        value = string[i].toLowerCase().charCodeAt(0)
-        if(value > 96 && value < 123) {
-            value -= 97;
-            this.guessed[value] = 1;
+            // Update the guessed array with a value of 1 to search
+            if(value > 96 && value < 123) {
+                value -= 97;
+                This.guessed[value] = 1;
+            }
         }
-    }
-    function getSum(total, num) {
-        return total + num;
-    }
-
-    this.completed = this.guessed.reduce(getSum);
-    console.log(this.completed);
+        function getSum(total, num) {
+            return total + num;
+        }
+    
+        This.completed = This.guessed.reduce(getSum);
+        This.display();
+    });
 };
 
 Hangman.prototype.display = function() {
@@ -69,11 +78,14 @@ Hangman.prototype.display = function() {
     var hiddenString = eachLetter(string);
 
     // display the string
-    console.log(global.spacer);
+    if(this.completed >= 1) {
+        console.log(global.spacer);
+    }
+
     console.log(hiddenString);
     
     // if completed is still > 0, prompt
-    if(this.completed > 1) {
+    if(this.completed >= 1) {
         this.prompt();
     }
 }
@@ -107,11 +119,11 @@ Hangman.prototype.prompt = function() {
                 }
 
                 // update the guessed array value to -2
-                This.guessed[value] = -2;
+                This.guessed[value - 97] = -2;
                 This.completed -= 1;
-
                 if(This.completed === 0) {
-                    console.log("This game is completed!");
+                    console.log(global.hero.name + " finished the game! The phrase was: ");
+                    This.display();
                     exp(10 + (This.lives * 10));
                     global.current.inspect();
                 }
@@ -119,13 +131,14 @@ Hangman.prototype.prompt = function() {
                     This.display();
                 }
             }
-            else if(This.guessed[value] === -2) {
-                console.log("Your mind realizes that you've already guessed this letter!");
+            else if(This.guessed[value - 97] === -2) {
+                console.log("Something in your your mind tell you that you've already guessed this letter!");
                 This.display();
             }
             else{
                 console.log("The page glows faintly and you feel it turn hot for a moment.");
                 This.lives -= 1;
+                This.guessed[value - 97] = -2;
                 if(This.lives === 0) {
                     console.log("... almost too hot! All of the characters vanish on the page. Perhaps you can try again.")
                     global.current.inspect();
