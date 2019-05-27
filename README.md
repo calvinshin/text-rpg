@@ -1,5 +1,5 @@
 # text-rpg
-A command line interface text based RPG prototype. This will be using constructors to join objects into an environment.
+A command line interface text based RPG prototype. This application uses constructors and inquirer to create a continuous application environment.
 
 ![Demo](/demo/demo.gif)
 
